@@ -168,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/woWEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/CSS-%E5%8F%98%E9%87%8F%E6%95%99%E7%A8%8B%E5%92%8C%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -182,7 +182,729 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2019/12/27/woWEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">woWEB前端优化笔记</a>
+            <a href="/2019/12/27/CSS-%E5%8F%98%E9%87%8F%E6%95%99%E7%A8%8B%E5%92%8C%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">CSS-变量教程和其他优化笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-27 18:18:16 / 修改时间：18:18:36" itemprop="dateCreated datePublished" datetime="2019-12-27T18:18:16+08:00">2019-12-27</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/12/27/CSS-%E5%8F%98%E9%87%8F%E6%95%99%E7%A8%8B%E5%92%8C%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/CSS-%E5%8F%98%E9%87%8F%E6%95%99%E7%A8%8B%E5%92%8C%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="CSS-变量教程"><a href="#CSS-变量教程" class="headerlink" title="CSS 变量教程"></a>CSS 变量教程</h1><h6 id="转载来源：http-www-ruanyifeng-com-blog-2017-05-css-variables-html"><a href="#转载来源：http-www-ruanyifeng-com-blog-2017-05-css-variables-html" class="headerlink" title="转载来源：http://www.ruanyifeng.com/blog/2017/05/css-variables.html"></a>转载来源：<a href="http://www.ruanyifeng.com/blog/2017/05/css-variables.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2017/05/css-variables.html</a></h6><h2 id="一、变量的声明"><a href="#一、变量的声明" class="headerlink" title="一、变量的声明"></a>一、变量的声明</h2><p>声明变量的时候，变量名前面要加两根连词线（–）。</p>
+<p>body {</p>
+<p>  –foo: #7F583F;</p>
+<p>  –bar: #F7EFD2;</p>
+<p>}</p>
+<p>上面代码中，body选择器里面声明了两个变量：–foo和–bar。</p>
+<p>它们与color、font-size等正式属性没有什么不同，只是没有默认含义。所以 CSS 变量（CSS variable）又叫做 <strong>&quot;CSS 自定义属性&quot;</strong> （CSS custom properties）。因为变量与自定义的 CSS 属性其实是一回事。</p>
+<p>你可能会问，为什么选择两根连词线（–）表示变量？因为$foo被 Sass 用掉了，@foo被 Less 用掉了。为了不产生冲突，官方的 CSS 变量就改用两根连词线了。</p>
+<p>各种值都可以放入 CSS 变量。</p>
+<p>:root{</p>
+<p>  –main-color: #4d4e53;</p>
+<p>  –main-bg: rgb(255, 255, 255);</p>
+<p>  –logo-border-color: rebeccapurple;</p>
+<p>  –header-height: 68px;</p>
+<p>  –content-padding: 10px 20px;</p>
+<p>  –base-line-height: 1.428571429;</p>
+<p>  –transition-duration: .35s;</p>
+<p>  –external-link:&quot;external link&quot;;</p>
+<p>  –margin-top: calc(2vh + 20px);</p>
+<p>}</p>
+<p>变量名大小写敏感，–header-color和–Header-Color是两个不同变量。</p>
+<h2 id="二、var-函数"><a href="#二、var-函数" class="headerlink" title="二、var() 函数"></a>二、var() 函数</h2><p>var()函数用于读取变量。</p>
+<p>a {</p>
+<p>  color: var(–foo);</p>
+<p>  text-decoration-color: var(–bar);</p>
+<p>}</p>
+<p>var()函数还可以使用第二个参数，表示变量的默认值。如果该变量不存在，就会使用这个默认值。</p>
+<p>color: var(–foo, #7F583F);</p>
+<p>第二个参数不处理内部的逗号或空格，都视作参数的一部分。</p>
+<p>var(–font-stack, &quot;Roboto&quot;, &quot;Helvetica&quot;);</p>
+<p>var(–pad, 10px 15px 20px);</p>
+<p>var()函数还可以用在变量的声明。</p>
+<p>:root {</p>
+<p>  –primary-color: red;</p>
+<p>  –logo-text: var(–primary-color);</p>
+<p>}</p>
+<p>注意，变量值只能用作属性值，不能用作属性名。</p>
+<p>.foo {</p>
+<p>  –side: margin-top;</p>
+<p>  /* 无效 */</p>
+<p>  var(–side): 20px;</p>
+<p>}</p>
+<p>上面代码中，变量–side用作属性名，这是无效的。</p>
+<h2 id="三、变量值的类型"><a href="#三、变量值的类型" class="headerlink" title="三、变量值的类型"></a>三、变量值的类型</h2><p>如果变量值是一个字符串，可以与其他字符串拼接。</p>
+<p>–bar:&#39;hello&#39;;</p>
+<p>–foo: var(–bar)&#39; world&#39;;</p>
+<p>利用这一点，可以 debug（<a href="https://codepen.io/malyw/pen/oBWMOY" target="_blank" rel="noopener">例子</a>）。</p>
+<p>body:after {</p>
+<p>  content: &#39;–screen-category: &#39;var(–screen-category);</p>
+<p>}</p>
+<p>如果变量值是数值，不能与数值单位直接连用。</p>
+<p>.foo {</p>
+<p>  –gap: 20;</p>
+<p>  /* 无效 */</p>
+<p>  margin-top: var(–gap)px;</p>
+<p>}</p>
+<p>上面代码中，数值与单位直接写在一起，这是无效的。必须使用calc()函数，将它们连接。</p>
+<p>.foo {</p>
+<p>  –gap: 20;</p>
+<p>  margin-top: calc(var(–gap) * 1px);</p>
+<p>}</p>
+<p>如果变量值带有单位，就不能写成字符串。</p>
+<p>/* 无效 */</p>
+<p>.foo {</p>
+<p>  –foo:&#39;20px&#39;;</p>
+<p>  font-size: var(–foo);</p>
+<p>}</p>
+<p>/* 有效 */</p>
+<p>.foo {</p>
+<p>  –foo: 20px;</p>
+<p>  font-size: var(–foo);</p>
+<p>}</p>
+<h2 id="四、作用域"><a href="#四、作用域" class="headerlink" title="四、作用域"></a>四、作用域</h2><p>同一个 CSS 变量，可以在多个选择器内声明。读取的时候，优先级最高的声明生效。这与 CSS 的&quot;层叠&quot;（cascade）规则是一致的。</p>
+<p>下面是一个<a href="http://jsbin.com/buwahixoqo/edit?html,css,output" target="_blank" rel="noopener">例子</a>。</p>
+<p>&amp;lt;style&amp;gt;</p>
+<p>  :root { –color: blue; }</p>
+<p>  div { –color: green; }</p>
+<p>  #alert { –color: red; }</p>
+<p>  * { color: var(–color); }</p>
+<p>&amp;lt;/style&amp;gt;</p>
+<p>&amp;lt;p&amp;gt;蓝色&amp;lt;/p&amp;gt;</p>
+<p>&amp;lt;div&amp;gt;绿色&amp;lt;/div&amp;gt;</p>
+<p>&amp;lt;div id=&quot;alert&quot;&amp;gt;红色&amp;lt;/div&amp;gt;</p>
+<p>上面代码中，三个选择器都声明了–color变量。不同元素读取这个变量的时候，会采用优先级最高的规则，因此三段文字的颜色是不一样的。</p>
+<p>这就是说，变量的作用域就是它所在的选择器的有效范围。</p>
+<p>body {</p>
+<p>  –foo: #7F583F;</p>
+<p>}</p>
+<p>.content {</p>
+<p>  –bar: #F7EFD2;</p>
+<p>}</p>
+<p>上面代码中，变量–foo的作用域是body选择器的生效范围，–bar的作用域是.content选择器的生效范围。</p>
+<p>由于这个原因，全局的变量通常放在根元素:root里面，确保任何选择器都可以读取它们。</p>
+<p>:root {</p>
+<p>  –main-color: #06c;</p>
+<p>}</p>
+<h2 id="五、响应式布局"><a href="#五、响应式布局" class="headerlink" title="五、响应式布局"></a>五、响应式布局</h2><p>CSS 是动态的，页面的任何变化，都会导致采用的规则变化。</p>
+<p>利用这个特点，可以在响应式布局的media命令里面声明变量，使得不同的屏幕宽度有不同的变量值。</p>
+<p>body {</p>
+<p>  –primary: #7F583F;</p>
+<p>  –secondary: #F7EFD2;</p>
+<p>}</p>
+<p>a {</p>
+<p>  color: var(–primary);</p>
+<p>  text-decoration-color: var(–secondary);</p>
+<p>}</p>
+<p>@media screen and (min-width: 768px){</p>
+<p>  body {</p>
+<pre><code>--primary:  #F7EFD2;
+
+--secondary: #7F583F;</code></pre><p>  }</p>
+<p>}</p>
+<h2 id="六、兼容性处理"><a href="#六、兼容性处理" class="headerlink" title="六、兼容性处理"></a>六、兼容性处理</h2><p>对于不支持 CSS 变量的浏览器，可以采用下面的写法。</p>
+<p>a {</p>
+<p>  color: #7F583F;</p>
+<p>  color: var(–primary);</p>
+<p>}</p>
+<p>也可以使用@support命令进行检测。</p>
+<p>@supports ( (–a: 0)){</p>
+<p>  /* supported */</p>
+<p>}</p>
+<p>@supports ( not (–a: 0)){</p>
+<p>  /* not supported */</p>
+<p>}</p>
+<h2 id="七、JavaScript-操作"><a href="#七、JavaScript-操作" class="headerlink" title="七、JavaScript 操作"></a>七、JavaScript 操作</h2><p>JavaScript 也可以检测浏览器是否支持 CSS 变量。</p>
+<p>const isSupported =</p>
+<p>  window.CSS &amp;&amp;</p>
+<p>  window.CSS.supports &amp;&amp;</p>
+<p>  window.CSS.supports(&#39;–a&#39;,0);</p>
+<p>if(isSupported){</p>
+<p>  /* supported */</p>
+<p>}else{</p>
+<p>  /* not supported */</p>
+<p>}</p>
+<p>JavaScript 操作 CSS 变量的写法如下。</p>
+<p>// 设置变量</p>
+<p>document.body.style.setProperty(&#39;–primary&#39;,&#39;#7F583F&#39;);</p>
+<p>// 读取变量</p>
+<p>document.body.style.getPropertyValue(&#39;–primary&#39;).trim();</p>
+<p>// &#39;#7F583F&#39;</p>
+<p>// 删除变量</p>
+<p>document.body.style.removeProperty(&#39;–primary&#39;);</p>
+<p>这意味着，JavaScript 可以将任意值存入样式表。下面是一个监听事件的例子，事件信息被存入 CSS 变量。</p>
+<p>const docStyle = document.documentElement.style;</p>
+<p>document.addEventListener(&#39;mousemove&#39;,(e)=&amp;gt;{</p>
+<p>  docStyle.setProperty(&#39;–mouse-x&#39;, e.clientX);</p>
+<p>  docStyle.setProperty(&#39;–mouse-y&#39;, e.clientY);</p>
+<p>});</p>
+<p>那些对 CSS 无用的信息，也可以放入 CSS 变量。</p>
+<p>–foo: if(x &amp;gt; 5) this.width = 10;</p>
+<p>上面代码中，–foo的值在 CSS 里面是无效语句，但是可以被 JavaScript 读取。这意味着，可以把样式设置写在 CSS 变量中，让 JavaScript 读取。</p>
+<p>所以，CSS 变量提供了 JavaScript 与 CSS 通信的一种途径。</p>
+<h1 id="最近一周前端知识储备备忘录"><a href="#最近一周前端知识储备备忘录" class="headerlink" title="最近一周前端知识储备备忘录"></a>最近一周前端知识储备备忘录</h1><p>这周工作量少了，开始翻阅资料充电：</p>
+<p>1、awk：</p>
+<p><a href="https://en.wikipedia.org/wiki/AWK" target="_blank" rel="noopener">awk</a>是处理文本文件的一个应用程序，几乎所有 Linux 系统都自带这个程序。</p>
+<p>它依次处理文件的每一行，并读取里面的每一个字段。对于日志、CSV 那样的每行格式相同的文本文件，awk可能是最方便的工具。</p>
+<p>2、fish shell:</p>
+<p>很方便的mac命令行工具，不需要配置和安装插件。自动补齐建议，有目录存在的文件夹会有下划线表示，方便快捷</p>
+<p>3、了解了下docker工具，方便部署和配置环境变量用，其他还有emoji的js、css用法，restfulAPI的一些了解，响应式图像，</p>
+<p>4、埋点的一些API，如a链接里的ping可以发送post请求、<strong>navigator.sendBeacon()</strong> 方法，异步阻塞和同步任务阻塞法等</p>
+<p>5、重新看了下grid布局和css变量、SVG、人工智能的卷积神经网络小知识、其他的展开循环等js代码优化</p>
+<p>6、看了阮一峰写的关于未来趋势的书</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/postMessage%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BA%92%E7%9B%B8%E4%BB%BB%E6%84%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="observe">
+      <meta itemprop="description" content=".">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="observe">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/27/postMessage%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BA%92%E7%9B%B8%E4%BB%BB%E6%84%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">postMessage——实现页面之间互相任意传送数据</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-27 18:09:01 / 修改时间：18:15:12" itemprop="dateCreated datePublished" datetime="2019-12-27T18:09:01+08:00">2019-12-27</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/12/27/postMessage%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BA%92%E7%9B%B8%E4%BB%BB%E6%84%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/postMessage%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BA%92%E7%9B%B8%E4%BB%BB%E6%84%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="postMessage——实现页面之间互相任意传送数据"><a href="#postMessage——实现页面之间互相任意传送数据" class="headerlink" title="postMessage——实现页面之间互相任意传送数据"></a>postMessage——实现页面之间互相任意传送数据</h1><p>参考文章：<a href="https://www.jb51.net/html5/471062.html" target="_blank" rel="noopener">https://www.jb51.net/html5/471062.html</a></p>
+<p>很早之前看跨域资料时，就想到页面之间互相任意传送数据的可能性，今天根据链接中的文章实现了。</p>
+<p>首先，需要开设两个服务端口（为了显示即便跨域也是可以的才用两个，也可以开设一个端口）。如果用webstrom自带一个，就另外架设一个服务就行。</p>
+<p>其次，实现原理上；</p>
+<p>1、a页面，用open方法打开b页面（获取到b页面的window对象，就可以实现向b页面传送数据）。</p>
+<p>2、b页面，添加onmessage事件，就可以接收到a页面的window对象，并进而向a页面传送数据</p>
+<p>最后是代码：</p>
+<p>1、a页面代码：</p>
+<p>// postMessage实验，本页面用端口服务5000打开，加载后会自动打开testFilfer.html页面（在端口63342）</p>
+<p>var domain = <a href="http://localhost:63342" target="_blank" rel="noopener">http://localhost:63342</a>;</p>
+<p>var myPopup = window.open(domain/linkTomysql/testFilter.html;myWindow;);</p>
+<p>//周期性的发送消息</p>
+<p>setInterval(function(){</p>
+<pre><code>var message = Hello!  The time is:  + (new Date().getTime());
+
+console.log(blog.local:  sending message:   + message);
+
+//send the message and target URI
+
+myPopup.postMessage(message,domain);</code></pre><p>},6000);</p>
+<p>//监听消息反馈，接收testFilter页面的数据</p>
+<p>window.addEventListener(message,function(event) {</p>
+<pre><code>if(event.origin !== http://localhost:63342) return;
+
+console.log(received response:,event.data);</code></pre><p>},false);</p>
+<p>2、b页面代码：</p>
+<pre><code>// 接收test-grid-css的数据
+
+window.addEventListener(message,function(event) {
+
+    if(event.origin !== http://localhost:5000) return;
+
+    console.log(message received:   + event.data,event);
+
+    event.source.postMessage(holla back youngin,event.origin);
+
+},false);</code></pre>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="observe">
+      <meta itemprop="description" content=".">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="observe">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/" class="post-title-link" itemprop="url">前端性能优化—js代码打包</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-12-27 18:06:19 / 修改时间：18:07:59" itemprop="dateCreated datePublished" datetime="2019-12-27T18:06:19+08:00">2019-12-27</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>7.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前端性能优化—js代码打包"><a href="#前端性能优化—js代码打包" class="headerlink" title="前端性能优化—js代码打包"></a>前端性能优化—js代码打包</h1><p><a href="http://www.caixiaohu.com/article/web%e5%89%8d%e7%ab%af/%e5%89%8d%e7%ab%af%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96-js%e4%bb%a3%e7%a0%81%e6%89%93%e5%8c%85/" target="_blank" rel="noopener">2019/03/22</a></p>
+<p><a href="http://www.caixiaohu.com/article/web%e5%89%8d%e7%ab%af/%e5%89%8d%e7%ab%af%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96-js%e4%bb%a3%e7%a0%81%e6%89%93%e5%8c%85/#respond" target="_blank" rel="noopener">添加评论</a></p>
+<p>现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以，  <strong>控制 js 代码的体积</strong>  以及  <strong>按需加载</strong>  对前端性能以及用户体验是十分的重要。</p>
+<p>本文从 Tree Shaking 和 代码分割 两部分介绍 js 打包优化，有兴趣的可以跟着一起实践。 clone 以下项目 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fjasonintju%2Foptimizing-js">github.com/jasonintju/…</a> ，就是个简单的 React SPA，一看就懂。</p>
+<h2 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h2><p>Tree Shaking 简单理解就是：打包时把一些没有用到的代码删除掉，保证打包后的代码体积最小化。其详细的介绍可以参考 <a href="https://link.juejin.im/?target=https%3A%2F%2Fjuejin.im%2Fpost%2F5a4dc842518825698e7279a9">Tree-Shaking性能优化实践 – 原理篇</a> 。</p>
+<p>项目 clone、安装依赖后，先 npm run build 打包初始代码，大小及分布如下（其中 src/utils/utils.js 这个文件打包后大小为 11.72Kb ）：</p>
+<p>src/containers/About/test.js 只引用但是没有使用到， src/utils/utils.js 这个文件是个 <a href="http://www.codercto.com/tool.html" target="_blank" rel="noopener">工具</a> 函数集，有很多很多函数，而我们只用到了其中的一个。默认情况下，整个文件都被打包进 main.js 了，显然，这是很大的冗余，正好可以使用 Tree Shaking 优化。</p>
+<h3 id="修改-babelrc"><a href="#修改-babelrc" class="headerlink" title="修改 .babelrc"></a>修改 .babelrc</h3><p>{</p>
+<p>  &quot;presets&quot;:[[&quot;env&quot;,{&quot;modules&quot;:false}],&quot;react&quot;,&quot;stage-0&quot;]</p>
+<p>}</p>
+<p>复制代码</p>
+<h3 id="修改-package-json"><a href="#修改-package-json" class="headerlink" title="修改 package.json"></a>修改 package.json</h3><p>{</p>
+<p>  &quot;name&quot;:&quot;optimizing-js&quot;,</p>
+<p>  &quot;version&quot;:&quot;1.0.0&quot;,</p>
+<p>  &quot;sideEffects&quot;:false</p>
+<p>}</p>
+<p>复制代码</p>
+<p>这样设置之后，表示所有的 module 都是无副作用的，没有使用到的 module 都可以删掉，此时打包结果如下：</p>
+<p>importReactfrom&#39;react&#39;;</p>
+<p>// 只引入了 arraySum， utils.js 中的其他方法不会被打包</p>
+<p>import{ arraySum }from&#39;@utils/utils&#39;;</p>
+<p>import&#39;./test&#39;;// 引用，&quot;未使用&quot;，不会被打包</p>
+<p>import&#39;./About.scss&#39;;// 引用，&quot;未使用&quot;，不会被打包</p>
+<p>classAboutextendsReact.Component{</p>
+<p>  render(){</p>
+<pre><code>const sum = arraySum([12,3]);
+
+return(
+
+  \&amp;lt;div className=&amp;quot;page-about&amp;quot;\&amp;gt;
+
+    \&amp;lt;h1\&amp;gt;AboutPage\&amp;lt;/h1\&amp;gt;
+
+    \&amp;lt;div\&amp;gt;12 plus 3 equals {sum}\&amp;lt;/div\&amp;gt;
+
+  \&amp;lt;/div\&amp;gt;
+
+);</code></pre><p>  }</p>
+<p>}</p>
+<p>exportdefaultAbout;</p>
+<p>复制代码</p>
+<p>如上面注释所说，Tree Shaking 认为这些是没有被使用的代码，所以可以删掉。但事实上我们知道不是这样的， test.js 可以删掉，但是 css、scss 是有用的代码，我们只需引入即可。因此，需要修改一下 sideEffects 的值：</p>
+<p>{</p>
+<p>  &quot;sideEffects&quot;:[</p>
+<pre><code>&amp;quot;\*.css&amp;quot;,&amp;quot;\*.scss&amp;quot;,&amp;quot;\*.sass&amp;quot;</code></pre><p>  ]</p>
+<p>}</p>
+<p>复制代码</p>
+<p>表示，除了 [] 中的文件（类型），其他文件都是无副作用的，可以放心删掉。此时打包结果：</p>
+<p>可以看到，css 等样式文件现在如期打包进去了。如果有其他类型的文件有副作用，但是也希望打包进去，在 sideEffects: [] 中添加即可，可以是具体的某个文件或者某种文件类型。</p>
+<p>关于为什么修改这两个地方就可以实现 Tree Shaking 的效果了，可以参考一下 <a href="https://link.juejin.im/?target=https%3A%2F%2Fdevelopers.google.com%2Fweb%2Ffundamentals%2Fperformance%2Foptimizing-javascript%2Ftree-shaking%2F">developers.google.com/web/fundame…</a> 或者其他文章，这里不做详细解释了。</p>
+<h2 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h2><p>单页应用，如果所有的资源都打包在一个 js 里面，毫无疑问，体积会非常庞大，首屏加载会有很长时间白屏，用户体验极差。所以，要代码分割，分成一个一个小的 js，优化加载时间。</p>
+<h3 id="分离第三方库代码"><a href="#分离第三方库代码" class="headerlink" title="分离第三方库代码"></a>分离第三方库代码</h3><p>第三方库代码单独提取出来，和业务代码分离，减少 js 文件体积。在 webpack.base.conf.js 中增加：</p>
+<p>module:{…},</p>
+<p>optimization:{</p>
+<p>  splitChunks:{</p>
+<pre><code>cacheGroups:{
+
+  venders:{
+
+    test:/node\_modules/,
+
+    name:&amp;#39;vendors&amp;#39;,
+
+    chunks:&amp;#39;all&amp;#39;
+
+  }
+
+}</code></pre><p>  }</p>
+<p>},</p>
+<p>plugins:…</p>
+<p>复制代码</p>
+<h3 id="动态导入"><a href="#动态导入" class="headerlink" title="动态导入"></a>动态导入</h3><p>使用 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Ftc39%2Fproposal-dynamic-import">ECMAScript 提案</a> 的 dynamic import 语法可以异步加载业务中的组件。使用方法如下：</p>
+<p>// src/containers/App/App.js</p>
+<p>// 注释掉此行代码</p>
+<p>// import About from &#39;@containers/About/About&#39;;</p>
+<p>// 修改模块为动态导入形式</p>
+<p>&amp;lt;Route path=&quot;/about&quot; render={()=&amp;gt;import(/* webpackChunkName: &quot;about&quot; */&#39;@containers/About/About&#39;).then(module=&amp;gt;module.default)}/&amp;gt;</p>
+<p>复制代码</p>
+<p>此时打包结果：</p>
+<p>能看到， &amp;lt;About&amp;gt; 组件 已经被 webpack 单独打包出对应的 js 文件了。同时，结合 react-router ，分离 &amp;lt;About&amp;gt; 组件 的同时也做到了  <strong>按需加载</strong>  ：当访问 About 页面时， about.js 才会被浏览器加载。</p>
+<p>注意，我们现在只是简单地使用了 dynamic import ，很多边界情况没考虑进去，比如：加载进度、加载失败、超时等处理。可以开发一个高阶组件，把这些异常处理都包含进去。社区有个很棒的 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fjamiebuilds%2Freact-loadable">react-loadable</a> ，大树底下好乘凉~</p>
+<p>npm i react-loadable</p>
+<p>// src/containers/App/App.js</p>
+<p>importLoadablefrom&#39;react-loadable&#39;;</p>
+<p>// 代码分割 &amp; 异步加载</p>
+<p>constLoadableAbout=Loadable({</p>
+<p>  loader:()=&amp;gt;import(/* webpackChunkName: &quot;about&quot; */&#39;@containers/About/About&#39;),</p>
+<p>  loading(){</p>
+<pre><code>return\&amp;lt;div\&amp;gt;Loading...\&amp;lt;/div\&amp;gt;;</code></pre><p>  }</p>
+<p>});</p>
+<p>classAppextendsReact.Component{</p>
+<p>  render(){</p>
+<pre><code>return(
+
+  \&amp;lt;BrowserRouter\&amp;gt;
+
+    \&amp;lt;div\&amp;gt;
+
+      \&amp;lt;Header/\&amp;gt;
+
+      \&amp;lt;Route exact path=&amp;quot;/&amp;quot; component={Home}/\&amp;gt;
+
+      \&amp;lt;Route path=&amp;quot;/docs&amp;quot; component={Docs}/\&amp;gt;
+
+      \&amp;lt;Route path=&amp;quot;/about&amp;quot; component={LoadableAbout}/\&amp;gt;
+
+    \&amp;lt;/div\&amp;gt;
+
+  \&amp;lt;/BrowserRouter\&amp;gt;
+
+);</code></pre><p>  }</p>
+<p>}</p>
+<p>复制代码</p>
+<p><a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fjamiebuilds%2Freact-loadable%23loadablecomponentpreload">react-loadable</a> 还提供了 preload 功能。假如有统计数据显示，用户在进入首页之后大概率会进入 About 页面，那我们就在首页加载完成的时候去加载 about.js ，这样等用户跳到 About 页面的时候，js 资源都已经加载好了，用户体验会更好。</p>
+<p>// src/containers/App/App.js</p>
+<p>componentDidMount(){</p>
+<p>  LoadableAbout.preload();</p>
+<p>}</p>
+<p>复制代码</p>
+<p>如果有同学对Network面板不是很熟悉，可以看一下 <a href="https://link.juejin.im/?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000008407729">Chrome DevTools — Network</a> 。</p>
+<h3 id="提取复用的业务代码"><a href="#提取复用的业务代码" class="headerlink" title="提取复用的业务代码"></a>提取复用的业务代码</h3><p>第三方库代码已经单独提取出来了，但是业务代码中也会有一些复用的代码，典型的比如一些工具函数库 utils.js。现在， About 组件 和 Docs 组件 都引用了 utils.js ，webpack 只打包了一份 utils.js 在 main.js 里面，main.js 在首页就被加载了，其他页面有使用到 utils.js 自然可以正常引用到，符合我们的预期。但是目前我们只是把 About 页面异步加载了，如果把 Docs 页面也异步加载了会怎么样呢？</p>
+<p>// src/containers/App/App.js</p>
+<p>// 注释掉此行代码</p>
+<p>// import Docs from &#39;@containers/Docs/Docs&#39;;</p>
+<p>constLoadableDocs=Loadable({</p>
+<p>  loader:()=&amp;gt;import(/* webpackChunkName: &quot;docs&quot; */&#39;@containers/Docs/Docs&#39;),</p>
+<p>  loading(){</p>
+<pre><code>return\&amp;lt;div\&amp;gt;Loading...\&amp;lt;/div\&amp;gt;;</code></pre><p>  }</p>
+<p>});</p>
+<p>classAppextendsReact.Component{</p>
+<p>  render(){</p>
+<pre><code>return(
+
+  \&amp;lt;BrowserRouter\&amp;gt;
+
+    \&amp;lt;div\&amp;gt;
+
+      \&amp;lt;Header/\&amp;gt;
+
+      \&amp;lt;Route exact path=&amp;quot;/&amp;quot; component={Home}/\&amp;gt;
+
+      \&amp;lt;Route path=&amp;quot;/docs&amp;quot; component={LoadableDocs}/\&amp;gt;
+
+      \&amp;lt;Route path=&amp;quot;/about&amp;quot; component={LoadableAbout}/\&amp;gt;
+
+    \&amp;lt;/div\&amp;gt;
+
+  \&amp;lt;/BrowserRouter\&amp;gt;
+
+);</code></pre><p>  }</p>
+<p>}</p>
+<p>复制代码</p>
+<p>此时打包结果：</p>
+<p>能够看到，about.js 和 docs.js 里面都打包了 utils.js，重复了！ 在 webpack.base.conf.js 中增加：</p>
+<p>module:{…},</p>
+<p>optimization:{</p>
+<p>  splitChunks:{</p>
+<pre><code>cacheGroups:{
+
+  venders:{
+
+    test:/node\_modules/,
+
+    name:&amp;#39;vendors&amp;#39;,
+
+    chunks:&amp;#39;all&amp;#39;
+
+  },
+
+  default:{
+
+    minSize:0,
+
+    minChunks:2,
+
+    reuseExistingChunk:true,
+
+    name:&amp;#39;utils&amp;#39;
+
+  }
+
+}</code></pre><p>  }</p>
+<p>},</p>
+<p>plugins:…</p>
+<p>复制代码</p>
+<p>再打包看结果：</p>
+<p>utils.js 也被单独打包出来了，达到了预期。</p>
+<h3 id="分离非首页使用且复用程度小的第三方库"><a href="#分离非首页使用且复用程度小的第三方库" class="headerlink" title="分离非首页使用且复用程度小的第三方库"></a>分离非首页使用且复用程度小的第三方库</h3><p>假如，现在 Docs.js 引用了 lodash 这个三方库：</p>
+<p>importReactfrom&#39;react&#39;;</p>
+<p>import _ from&#39;lodash&#39;;</p>
+<p>import{ arraySum }from&#39;@utils/utils&#39;;</p>
+<p>import&#39;./Docs.scss&#39;;</p>
+<p>classDocsextendsReact.Component{</p>
+<p>  render(){</p>
+<pre><code>const sum = arraySum([1,3]);
+
+const b = \_.sum([1,3]);
+
+return(
+
+  \&amp;lt;div className=&amp;quot;page-docs&amp;quot;\&amp;gt;
+
+    \&amp;lt;h1\&amp;gt;DocsPage\&amp;lt;/h1\&amp;gt;
+
+    \&amp;lt;div\&amp;gt;1 plus 3 equals {sum}\&amp;lt;/div\&amp;gt;
+
+    \&amp;lt;br /\&amp;gt;
+
+    \&amp;lt;div\&amp;gt;use \_.sum,1 plus 3 equals {b} too.\&amp;lt;/div\&amp;gt;
+
+  \&amp;lt;/div\&amp;gt;
+
+);</code></pre><p>  }</p>
+<p>}</p>
+<p>exportdefaultDocs;</p>
+<p>复制代码</p>
+<p>打包结果：</p>
+<p>lodash.js 只在 Docs 页面使用，而且可能 Docs 页面访问量很少，把 lodash.js 打包在首页就会加载的 venders.js 里面，实在不是明智之举。</p>
+<p>修改 webpack.base.conf.js ：</p>
+<p>…</p>
+<p>venders:{</p>
+<p>  test:/node_modules/(?!(lodash)/)/,// 去除 lodash，剩余的第三方库打成一个包，命名为 vendors-common</p>
+<p>  name:&#39;vendors-common&#39;,</p>
+<p>  chunks:&#39;all&#39;</p>
+<p>},</p>
+<p>lodash:{</p>
+<p>  test:/node_modules/lodash//,// lodash 库单独打包，并命名为 vender-lodash</p>
+<p>  name:&#39;vender-lodash&#39;</p>
+<p>},</p>
+<p>default:{</p>
+<p>  minSize:0,</p>
+<p>  minChunks:2,</p>
+<p>  reuseExistingChunk:true,</p>
+<p>  name:&#39;utils&#39;</p>
+<p>}</p>
+<p>…</p>
+<p>复制代码</p>
+<p>此时把 lodash 单独打成了一个包，且配合 Docs 页面的按需加载，达到了理想的加载效果。</p>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>项目打包后，资源部署在 <a href="http://www.codercto.com/category/server.html" target="_blank" rel="noopener">服务器</a> 端，客户端需要向服务器请求下载这些资源，用户才能看到内容。使用缓存，客户端可以大大减少不必要的请求和时间耽搁，只有当资源有更新时，再去下载。区分一个文件是否有更新，使用 文件名 + hash 可以达到目的。本案例中，已经使用了 &#39;[name].[contenthash:8].js&#39; 。</p>
+<p>然而，在打包的时候，webpack的运行时代码有时候会导致某些情况出现，如：什么内容都没改，两次 build 代码的 hash 不一样；或者是，修改了 a 文件的代码，却导致了某些未修改代码文件的 hash 也发生了变化。 <a href="https://link.juejin.im/?target=https%3A%2F%2Fwebpack.js.org%2Fconcepts%2Fmanifest%2F">This is caused by the injection of the runtime and manifest which changes every build.</a></p>
+<p>注意：使用的 webpack 版本不同，可能会导致打包出的结果不一样。较新的版本或许没有这种 hash 问题，但为了安全起见，还是建议按照下面的步骤处理一下。</p>
+<h4 id="分离-webpack-runtimeChunk-code"><a href="#分离-webpack-runtimeChunk-code" class="headerlink" title="分离 webpack runtimeChunk code"></a>分离 webpack runtimeChunk code</h4><p>// webpack.base.conf.js</p>
+<p>optimization:{</p>
+<p>  runtimeChunk:{</p>
+<pre><code>name:&amp;#39;manifest&amp;#39;</code></pre><p>  },</p>
+<p>  splitChunks:{…}</p>
+<p>}</p>
+<p>复制代码</p>
+<p>此时，能达到：修改某个文件，只有这个文件和 manifest.js 文件的 hash 会发生变化，其他文件的 hash 不变。 打包前：</p>
+<p>// About.scss</p>
+<p>.page-about {</p>
+<p>  padding-left:30px;</p>
+<p>  color:#545880; // 修改字体颜色</p>
+<p>}</p>
+<p>复制代码</p>
+<p>修改后：</p>
+<h4 id="HashedModuleIdsPlugin"><a href="#HashedModuleIdsPlugin" class="headerlink" title="HashedModuleIdsPlugin"></a>HashedModuleIdsPlugin</h4><p>增加、删除一些模块，可能会导致不相关文件的 hash 发生变化，这是因为 webpack 打包时，按照导入模块的顺序，module.id 自增，会导致某些模块的module.id 发生变化，进而导致文件的 hash 变化。</p>
+<p>解决方式： 使用 webpack 内置的 <a href="https://link.juejin.im/?target=https%3A%2F%2Fwebpack.js.org%2Fplugins%2Fhashed-module-ids-plugin%2F">HashedModuleIdsPlugin</a> ，该插件基于导入模块的相对路径生成相应的module.id，这样如果内容没有变化加上module.id 也没变化，则生成的 hash 也就不会变化了。</p>
+<p>// webpack.prod.conf.js</p>
+<p>const webpack =require(&#39;webpack&#39;);</p>
+<p>…</p>
+<p>plugins:[new webpack.HashedModuleIdsPlugin(),newBundleAnalyzerPlugin()]</p>
+<p>复制代码</p>
+<p>完整的优化代码见 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fjasonintju%2Foptimizing-js-example">github.com/jasonintju/…</a></p>
+<p>有用的文章： <a href="https://link.juejin.im/?target=https%3A%2F%2Fyi-jy.com%2F2018%2F06%2F09%2Fwebpack-split-chunks%2F">webpack分离第三方库及公用文件</a></p>
+<p><a href="https://link.juejin.im/?target=https%3A%2F%2Fdevelopers.google.com%2Fweb%2Ffundamentals%2Fperformance%2Foptimizing-javascript%2Ftree-shaking%2F">developers.google.com/web/fundame…</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="observe">
+      <meta itemprop="description" content=".">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="observe">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/27/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">WEB前端优化笔记</a>
         </h1>
 
         <div class="post-meta">
@@ -205,8 +927,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/12/27/woWEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/woWEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/12/27/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -965,7 +1687,7 @@ process(values[i++]);</code></pre><p>}while(–iterations &amp;gt; 0);</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1000,12 +1722,12 @@ process(values[i++]);</code></pre><p>}while(–iterations &amp;gt; 0);</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">8k</span>
+    <span title="站点总字数">20k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">7 分钟</span>
+    <span title="站点阅读时长">18 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
   </div>
