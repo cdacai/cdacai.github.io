@@ -46,19 +46,22 @@
   };
 </script>
 
-  <meta name="description" content="前端性能优化—js代码打包2019&#x2F;03&#x2F;22 添加评论 现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以，  控制 js 代码的体积  以及  按需加载  对前端性能以及用户体验是十分的重要。 本文从 Tree Shaking">
+  <meta name="description" content="现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以，  控制 js 代码的体积  以及  按需加载  对前端性能以及用户体验是十分的重要。 本文从 Tree Shaking 和 代码分割 两部分介绍 js 打包优化，有兴趣的可以跟">
 <meta property="og:type" content="article">
 <meta property="og:title" content="前端性能优化—js代码打包">
-<meta property="og:url" content="http://yoursite.com/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/03/22/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/index.html">
 <meta property="og:site_name" content="observe">
-<meta property="og:description" content="前端性能优化—js代码打包2019&#x2F;03&#x2F;22 添加评论 现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以，  控制 js 代码的体积  以及  按需加载  对前端性能以及用户体验是十分的重要。 本文从 Tree Shaking">
+<meta property="og:description" content="现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以，  控制 js 代码的体积  以及  按需加载  对前端性能以及用户体验是十分的重要。 本文从 Tree Shaking 和 代码分割 两部分介绍 js 打包优化，有兴趣的可以跟">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-12-27T10:06:19.620Z">
-<meta property="article:modified_time" content="2019-12-30T14:42:05.901Z">
+<meta property="article:published_time" content="2019-03-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-12-31T06:20:28.911Z">
 <meta property="article:author" content="observe">
+<meta property="article:tag" content="性能优化">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="打包">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/">
+<link rel="canonical" href="http://yoursite.com/2019/03/22/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/">
 
 
 <script id="page-configurations">
@@ -206,7 +209,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/categories/avatar.jpg">
@@ -229,15 +232,26 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2019-12-27 18:06:19" itemprop="dateCreated datePublished" datetime="2019-12-27T18:06:19+08:00">2019-12-27</time>
+              <time title="创建时间：2019-03-22 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-22T00:00:00+08:00">2019-03-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-30 22:42:05" itemprop="dateModified" datetime="2019-12-30T22:42:05+08:00">2019-12-30</time>
+                <time title="修改时间：2019-12-31 14:20:28" itemprop="dateModified" datetime="2019-12-31T14:20:28+08:00">2019-12-31</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">web前端</span>
+                  </a>
+                </span>
+            </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -255,8 +269,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/#comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2019/12/27/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/" itemprop="commentCount"></span>
+    <a title="valine" href="/2019/03/22/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/03/22/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -283,9 +297,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前端性能优化—js代码打包"><a href="#前端性能优化—js代码打包" class="headerlink" title="前端性能优化—js代码打包"></a>前端性能优化—js代码打包</h1><p><a href="http://www.caixiaohu.com/article/web%e5%89%8d%e7%ab%af/%e5%89%8d%e7%ab%af%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96-js%e4%bb%a3%e7%a0%81%e6%89%93%e5%8c%85/" target="_blank" rel="noopener">2019/03/22</a></p>
-<p><a href="http://www.caixiaohu.com/article/web%e5%89%8d%e7%ab%af/%e5%89%8d%e7%ab%af%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96-js%e4%bb%a3%e7%a0%81%e6%89%93%e5%8c%85/#respond" target="_blank" rel="noopener">添加评论</a></p>
-<p>现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以，  <strong>控制 js 代码的体积</strong>  以及  <strong>按需加载</strong>  对前端性能以及用户体验是十分的重要。</p>
+        <p>现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以，  <strong>控制 js 代码的体积</strong>  以及  <strong>按需加载</strong>  对前端性能以及用户体验是十分的重要。</p>
 <p>本文从 Tree Shaking 和 代码分割 两部分介绍 js 打包优化，有兴趣的可以跟着一起实践。 clone 以下项目 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fjasonintju%2Foptimizing-js">github.com/jasonintju/…</a> ，就是个简单的 React SPA，一看就懂。</p>
 <h2 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h2><p>Tree Shaking 简单理解就是：打包时把一些没有用到的代码删除掉，保证打包后的代码体积最小化。其详细的介绍可以参考 <a href="https://link.juejin.im/?target=https%3A%2F%2Fjuejin.im%2Fpost%2F5a4dc842518825698e7279a9">Tree-Shaking性能优化实践 – 原理篇</a> 。</p>
 <a id="more"></a>
@@ -558,6 +570,12 @@ return(
     
 
       <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"><i class="fa fa-tag"></i> 性能优化</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 前端</a>
+              <a href="/tags/%E6%89%93%E5%8C%85/" rel="tag"><i class="fa fa-tag"></i> 打包</a>
+          </div>
 
         
 
@@ -565,10 +583,13 @@ return(
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/12/27/wordPress%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97%E2%80%94%E2%80%94%E6%AD%A3%E5%BC%8F%E5%BC%80%E9%80%9A/" rel="prev" title="wordPress快速建站日志——正式开通">
+    <a href="/2019/01/22/wordPress%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97%E2%80%94%E2%80%94%E6%AD%A3%E5%BC%8F%E5%BC%80%E9%80%9A/" rel="prev" title="wordPress快速建站日志——正式开通">
       <i class="fa fa-chevron-left"></i> wordPress快速建站日志——正式开通
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2019/03/22/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/" rel="next" title="WEB前端优化笔记">
+      WEB前端优化笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -629,7 +650,7 @@ return(
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前端性能优化—js代码打包"><span class="nav-number">1.</span> <span class="nav-text">前端性能优化—js代码打包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree-Shaking"><span class="nav-number">1.1.</span> <span class="nav-text">Tree Shaking</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-babelrc"><span class="nav-number">1.1.1.</span> <span class="nav-text">修改 .babelrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-package-json"><span class="nav-number">1.1.2.</span> <span class="nav-text">修改 package.json</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码分割"><span class="nav-number">1.2.</span> <span class="nav-text">代码分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分离第三方库代码"><span class="nav-number">1.2.1.</span> <span class="nav-text">分离第三方库代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态导入"><span class="nav-number">1.2.2.</span> <span class="nav-text">动态导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取复用的业务代码"><span class="nav-number">1.2.3.</span> <span class="nav-text">提取复用的业务代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分离非首页使用且复用程度小的第三方库"><span class="nav-number">1.2.4.</span> <span class="nav-text">分离非首页使用且复用程度小的第三方库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.2.5.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分离-webpack-runtimeChunk-code"><span class="nav-number">1.2.5.1.</span> <span class="nav-text">分离 webpack runtimeChunk code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashedModuleIdsPlugin"><span class="nav-number">1.2.5.2.</span> <span class="nav-text">HashedModuleIdsPlugin</span></a></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tree-Shaking"><span class="nav-number">1.</span> <span class="nav-text">Tree Shaking</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-babelrc"><span class="nav-number">1.1.</span> <span class="nav-text">修改 .babelrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-package-json"><span class="nav-number">1.2.</span> <span class="nav-text">修改 package.json</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码分割"><span class="nav-number">2.</span> <span class="nav-text">代码分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分离第三方库代码"><span class="nav-number">2.1.</span> <span class="nav-text">分离第三方库代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态导入"><span class="nav-number">2.2.</span> <span class="nav-text">动态导入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提取复用的业务代码"><span class="nav-number">2.3.</span> <span class="nav-text">提取复用的业务代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分离非首页使用且复用程度小的第三方库"><span class="nav-number">2.4.</span> <span class="nav-text">分离非首页使用且复用程度小的第三方库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">2.5.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分离-webpack-runtimeChunk-code"><span class="nav-number">2.5.1.</span> <span class="nav-text">分离 webpack runtimeChunk code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HashedModuleIdsPlugin"><span class="nav-number">2.5.2.</span> <span class="nav-text">HashedModuleIdsPlugin</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -658,7 +679,7 @@ return(
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
