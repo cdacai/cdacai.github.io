@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-12-30T14:42:05.915Z</updated>
+  <updated>2019-12-30T14:42:05.901Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,26 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>postMessage——实现页面之间互相任意传送数据</title>
-    <link href="http://yoursite.com/2019/12/27/postMessage%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BA%92%E7%9B%B8%E4%BB%BB%E6%84%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE/"/>
-    <id>http://yoursite.com/2019/12/27/postMessage%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BA%92%E7%9B%B8%E4%BB%BB%E6%84%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE/</id>
-    <published>2019-12-27T10:09:01.442Z</published>
-    <updated>2019-12-30T14:42:05.915Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;postMessage——实现页面之间互相任意传送数据&quot;&gt;&lt;a href=&quot;#postMessage——实现页面之间互相任意传送数据&quot; class=&quot;headerlink&quot; title=&quot;postMessage——实现页面之间互相任意传送数据&quot;&gt;&lt;/a&gt;postMessage——实现页面之间互相任意传送数据&lt;/h1&gt;&lt;p&gt;参考文章：&lt;a href=&quot;https://www.jb51.net/html5/471062.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.jb51.net/html5/471062.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;很早之前看跨域资料时，就想到页面之间互相任意传送数据的可能性，今天根据链接中的文章实现了。&lt;/p&gt;
-&lt;p&gt;首先，需要开设两个服务端口（为了显示即便跨域也是可以的才用两个，也可以开设一个端口）。如果用webstrom自带一个，就另外架设一个服务就行。&lt;/p&gt;
-&lt;p&gt;其次，实现原理上；&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
   
   <entry>
     <title>前端性能优化—js代码打包</title>
@@ -50,26 +30,6 @@
 &lt;p&gt;现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以，  &lt;strong&gt;控制 js 代码的体积&lt;/strong&gt;  以及  &lt;strong&gt;按需加载&lt;/strong&gt;  对前端性能以及用户体验是十分的重要。&lt;/p&gt;
 &lt;p&gt;本文从 Tree Shaking 和 代码分割 两部分介绍 js 打包优化，有兴趣的可以跟着一起实践。 clone 以下项目 &lt;a href=&quot;https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fjasonintju%2Foptimizing-js&quot;&gt;github.com/jasonintju/…&lt;/a&gt; ，就是个简单的 React SPA，一看就懂。&lt;/p&gt;
 &lt;h2 id=&quot;Tree-Shaking&quot;&gt;&lt;a href=&quot;#Tree-Shaking&quot; class=&quot;headerlink&quot; title=&quot;Tree Shaking&quot;&gt;&lt;/a&gt;Tree Shaking&lt;/h2&gt;&lt;p&gt;Tree Shaking 简单理解就是：打包时把一些没有用到的代码删除掉，保证打包后的代码体积最小化。其详细的介绍可以参考 &lt;a href=&quot;https://link.juejin.im/?target=https%3A%2F%2Fjuejin.im%2Fpost%2F5a4dc842518825698e7279a9&quot;&gt;Tree-Shaking性能优化实践 – 原理篇&lt;/a&gt; 。&lt;/p&gt;
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>WEB前端优化笔记</title>
-    <link href="http://yoursite.com/2019/12/27/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/"/>
-    <id>http://yoursite.com/2019/12/27/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/</id>
-    <published>2019-12-27T10:03:03.409Z</published>
-    <updated>2019-12-30T14:42:05.918Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;WEB前端优化笔记&quot;&gt;&lt;a href=&quot;#WEB前端优化笔记&quot; class=&quot;headerlink&quot; title=&quot;WEB前端优化笔记&quot;&gt;&lt;/a&gt;WEB前端优化笔记&lt;/h1&gt;&lt;h3 id=&quot;一、展开循环&quot;&gt;&lt;a href=&quot;#一、展开循环&quot; class=&quot;headerlink&quot; title=&quot;一、展开循环&quot;&gt;&lt;/a&gt;&lt;strong&gt;一、展开循环&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;当循环的次数确定时，消除循环并使用多次函数调用往往更快&lt;/p&gt;
-&lt;p&gt;当循环的次数不确定时，可以使用Duff装置来优化。Duff装置的基本概念是通过计算迭代的次数是否为8的倍数将一个循环展开为一系列语句。如下：&lt;/p&gt;
-&lt;p&gt;// Jeff Greenberg for JS implementation of Duff&amp;#39;s Device&lt;/p&gt;
-&lt;p&gt;// 假设：values.length &amp;amp;gt; 0&lt;/p&gt;
     
     </summary>
     
@@ -160,19 +120,71 @@
   </entry>
   
   <entry>
+    <title>postMessage——实现页面之间互相任意传送数据</title>
+    <link href="http://yoursite.com/2019/07/09/postMessage%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BA%92%E7%9B%B8%E4%BB%BB%E6%84%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE/"/>
+    <id>http://yoursite.com/2019/07/09/postMessage%E2%80%94%E2%80%94%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E4%B9%8B%E9%97%B4%E4%BA%92%E7%9B%B8%E4%BB%BB%E6%84%8F%E4%BC%A0%E9%80%81%E6%95%B0%E6%8D%AE/</id>
+    <published>2019-07-08T16:00:00.000Z</published>
+    <updated>2019-12-31T03:29:41.374Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文章：&lt;a href=&quot;https://www.jb51.net/html5/471062.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://www.jb51.net/html5/471062.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;很早之前看跨域资料时，就想到页面之间互相任意传送数据的可能性，今天根据链接中的文章实现了。&lt;/p&gt;
+&lt;p&gt;首先，需要开设两个服务端口（为了显示即便跨域也是可以的才用两个，也可以开设一个端口）。如果用webstrom自带一个，就另外架设一个服务就行。&lt;/p&gt;
+&lt;p&gt;其次，实现原理上；&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="http://yoursite.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="跨域" scheme="http://yoursite.com/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+      <category term="postMessage" scheme="http://yoursite.com/tags/postMessage/"/>
+    
+      <category term="页面间消息传送" scheme="http://yoursite.com/tags/%E9%A1%B5%E9%9D%A2%E9%97%B4%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WEB前端优化笔记</title>
+    <link href="http://yoursite.com/2019/07/09/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2019/07/09/WEB%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/</id>
+    <published>2019-07-08T16:00:00.000Z</published>
+    <updated>2019-12-31T03:29:41.379Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;一、展开循环&quot;&gt;&lt;a href=&quot;#一、展开循环&quot; class=&quot;headerlink&quot; title=&quot;一、展开循环&quot;&gt;&lt;/a&gt;&lt;strong&gt;一、展开循环&lt;/strong&gt;&lt;/h3&gt;&lt;p&gt;当循环的次数确定时，消除循环并使用多次函数调用往往更快&lt;/p&gt;
+&lt;p&gt;当循环的次数不确定时，可以使用Duff装置来优化。Duff装置的基本概念是通过计算迭代的次数是否为8的倍数将一个循环展开为一系列语句。如下：&lt;/p&gt;
+&lt;p&gt;// Jeff Greenberg for JS implementation of Duff&amp;#39;s Device&lt;/p&gt;
+&lt;p&gt;// 假设：values.length &amp;amp;gt; 0&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="http://yoursite.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="优化" scheme="http://yoursite.com/tags/%E4%BC%98%E5%8C%96/"/>
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>CSS 变量教程</title>
     <link href="http://yoursite.com/2019/07/09/CSS-%E5%8F%98%E9%87%8F%E6%95%99%E7%A8%8B%E5%92%8C%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2019/07/09/CSS-%E5%8F%98%E9%87%8F%E6%95%99%E7%A8%8B%E5%92%8C%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/</id>
     <published>2019-07-08T16:00:00.000Z</published>
-    <updated>2019-12-30T14:54:25.288Z</updated>
+    <updated>2019-12-31T03:29:41.383Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;CSS-变量教程&quot;&gt;&lt;a href=&quot;#CSS-变量教程&quot; class=&quot;headerlink&quot; title=&quot;CSS 变量教程&quot;&gt;&lt;/a&gt;CSS 变量教程&lt;/h1&gt;&lt;h6 id=&quot;转载来源：http-www-ruanyifeng-com-blog-2017-05-css-variables-html&quot;&gt;&lt;a href=&quot;#转载来源：http-www-ruanyifeng-com-blog-2017-05-css-variables-html&quot; class=&quot;headerlink&quot; title=&quot;转载来源：http://www.ruanyifeng.com/blog/2017/05/css-variables.html&quot;&gt;&lt;/a&gt;转载来源：&lt;a href=&quot;http://www.ruanyifeng.com/blog/2017/05/css-variables.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://www.ruanyifeng.com/blog/2017/05/css-variables.html&lt;/a&gt;&lt;/h6&gt;&lt;h2 id=&quot;一、变量的声明&quot;&gt;&lt;a href=&quot;#一、变量的声明&quot; class=&quot;headerlink&quot; title=&quot;一、变量的声明&quot;&gt;&lt;/a&gt;一、变量的声明&lt;/h2&gt;&lt;p&gt;声明变量的时候，变量名前面要加两根连词线（–）。&lt;/p&gt;
-&lt;p&gt;body {&lt;/p&gt;
-&lt;p&gt;  –foo: #7F583F;&lt;/p&gt;
-&lt;p&gt;  –bar: #F7EFD2;&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
+      &lt;h2 id=&quot;一、变量的声明&quot;&gt;&lt;a href=&quot;#一、变量的声明&quot; class=&quot;headerlink&quot; title=&quot;一、变量的声明&quot;&gt;&lt;/a&gt;一、变量的声明&lt;/h2&gt;&lt;p&gt;声明变量的时候，变量名前面要加两根连词线（–）。&lt;/p&gt;
+&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-tag&quot;&gt;body&lt;/span&gt; &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;--foo&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;#7F583F&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attribute&quot;&gt;--bar&lt;/span&gt;: &lt;span class=&quot;number&quot;&gt;#F7EFD2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
 &lt;p&gt;上面代码中，body选择器里面声明了两个变量：–foo和–bar。&lt;/p&gt;
     
     </summary>
