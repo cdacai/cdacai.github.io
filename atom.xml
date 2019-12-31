@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>observe</title>
+  <title>Observe</title>
   <icon>http://yoursite.com/icon.png</icon>
-  <subtitle>观察了解，别无所求.</subtitle>
+  <subtitle>Observation And Understanding</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
@@ -10,7 +10,7 @@
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>observe</name>
+    <name>Observe</name>
     
   </author>
   
