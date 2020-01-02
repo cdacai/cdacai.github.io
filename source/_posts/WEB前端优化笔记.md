@@ -1,0 +1,221 @@
+---
+title: WEB前端优化笔记
+date: 2019-03-22 
+categories: 
+- web前端
+tags:
+- 优化
+- 笔记
+---
+### **一、展开循环**
+
+当循环的次数确定时，消除循环并使用多次函数调用往往更快
+
+当循环的次数不确定时，可以使用Duff装置来优化。Duff装置的基本概念是通过计算迭代的次数是否为8的倍数将一个循环展开为一系列语句。如下：
+
+// Jeff Greenberg for JS implementation of Duff&#39;s Device
+
+// 假设：values.length \&gt; 0
+<!--more-->
+function process(v) {
+
+    alert(v);
+
+}
+
+var values = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+
+var iterations = Math.ceil(values.length / 8);
+
+var startAt = values.length % 8;
+
+var i = 0;
+
+do {
+
+    switch(startAt) {
+
+        case 0 : process(values[i++]);
+
+        case 7 : process(values[i++]);
+
+        case 6 : process(values[i++]);
+
+        case 5 : process(values[i++]);
+
+        case 4 : process(values[i++]);
+
+        case 3 : process(values[i++]);
+
+        case 2 : process(values[i++]);
+
+        case 1 : process(values[i++]);
+
+    }
+
+    startAt = 0;
+
+}while(–iterations \&gt; 0);
+
+如上展开循环可以提升大数据集的处理速度。接下来给出更快的Duff装置技术，将do-while循环分成2个单独的循环。（注：这种方法几乎比原始的Duff装置实现快上40%。）
+
+// Speed Up Your Site(New Riders, 2003)
+
+function process(v) {
+
+    alert(v);
+
+}
+
+var values = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17];
+
+var iterations = Math.floor(values.length / 8);
+
+var leftover = values.length % 8;
+
+var i = 0;
+
+if(leftover \&gt; 0) {
+
+    do {
+
+        process(values[i++]);
+
+    }while(–leftover \&gt; 0);
+
+}
+
+do {
+
+    process(values[i++]);
+
+    process(values[i++]);
+
+    process(values[i++]);
+
+    process(values[i++]);
+
+    process(values[i++]);
+
+    process(values[i++]);
+
+    process(values[i++]);
+
+    process(values[i++]);
+
+}while(–iterations \&gt; 0);
+
+针对大数据集使用展开循环可以节省很多时间，但对于小数据集，额外的开销可能得不偿失。
+
+### **二、多使用innerHTML**
+
+有两种在页面上创建DOM节点的方法：使用诸如createElement()和appendChild()之类的DOM方法，以及使用innerHTML。对于小的DOM更改，两者效率差不多，但对于大的DOM更改，innerHTML要比标准的DOM方法创建同样的DOM结构快得多。
+
+当使用innerHTML设置为某个值时，后台会创建一个HTML解释器，然后使用内部的DOM调用来创建DOM结构，而非基于JS的DOM调用。由于内部方法是编译好的而非解释执行，故执行的更快。
+
+### 三、条件优化
+
+【合并条件片段】
+
+如果一个函数体内有一些条件分支语句，而这些条件分支语句内部散布了一些重复的代码，那么就有必要进行合并去重工作。假如有一个分页函数paging，该函数接收一个参数currPage，currPage表示即将跳转的页码。在跳转之前，为防止currPage传入过小或者过大的数字，要手动对它的值进行修正，详见如下伪代码：
+
+| 1234567891011 | var paging = function( currPage ){  if ( currPage \&lt;= 0 ){    currPage = 0;    jump( currPage ); // 跳转  }else if ( currPage \&gt;= totalPage ){    currPage = totalPage;    jump( currPage ); // 跳转  }else{    jump( currPage ); // 跳转  }}; |
+| --- | --- |
+
+可以看到，负责跳转的代码jump(currPage)在每个条件分支内都出现了，所以完全可以把这句代码独立出来：
+
+| 12345678 | var paging = function( currPage ){  if ( currPage \&lt;= 0 ){    currPage = 0;  }else if ( currPage \&gt;= totalPage ){    currPage = totalPage;  }  jump( currPage ); // 把jump 函数独立出来}; |
+| --- | --- |
+
+【把条件分支语句提炼成函数】
+
+在程序设计中，复杂的条件分支语句是导致程序难以阅读和理解的重要原因，而且容易导致一个庞大的函数。假设现在有一个需求是编写一个计算商品价格的getPrice函数，商品的计算只有一个规则：如果当前正处于夏季，那么全部商品将以8折出售。代码如下：
+
+| 1234567 | var getPrice = function( price ){  var date = new Date();  if ( date.getMonth() \&gt;= 6 &amp;&amp; date.getMonth() \&lt;= 9 ){ // 夏天    return price \* 0.8;  }  return price;}; |
+| --- | --- |
+
+观察这句代码：
+
+| 1 | date.getMonth()\&gt;=6&amp;&amp;date.getMonth()\&lt;=9 |
+| --- | --- |
+
+这句代码要表达的意思很简单，就是判断当前是否正处于夏天（7~10月）。尽管这句代码很短小，但代码表达的意图和代码自身还存在一些距离，阅读代码的人必须要多花一些精力才能明白它传达的意图。其实可以把这句代码提炼成一个单独的函数，既能更准确地表达代码的意思，函数名本身又能起到注释的作用。代码如下：
+
+| 12345678910 | var isSummer = function(){  var date = new Date();  return date.getMonth() \&gt;= 6 &amp;&amp; date.getMonth() \&lt;= 9;};var getPrice = function( price ){  if ( isSummer() ){ // 夏天    return price \* 0.8;  }  return price;}; |
+| --- | --- |
+
+【提前让函数退出代替嵌套条件分支】
+
+许多程序员都有这样一种观念：&quot;每个函数只能有一个入口和一个出口。&quot;现代编程语言都会限制函数只有一个入口。但关于&quot;函数只有一个出口&quot;，往往会有一些不同的看法。下面这段伪代码是遵守&quot;函数只有一个出口的&quot;的典型代码：
+
+| 1234567891011 | var del = function( obj ){  var ret;  if ( !obj.isReadOnly ){ // 不为只读的才能被删除    if ( obj.isFolder ){ // 如果是文件夹      ret = deleteFolder( obj );    }else if ( obj.isFile ){ // 如果是文件      ret = deleteFile( obj );    }  }  return ret;}; |
+| --- | --- |
+
+嵌套的条件分支语句绝对是代码维护者的噩梦，对于阅读代码的人来说，嵌套的if、else语句相比平铺的if、else，在阅读和理解上更加困难。嵌套的条件分支往往是由一些深信&quot;每个函数只能有一个出口的&quot;程序员写出的。但实际上，如果对函数的剩余部分不感兴趣，那就应该立即退出。引导阅读者去看一些没有用的else片段，只会妨碍他们对程序的理解
+
+于是可以挑选一些条件分支，在进入这些条件分支之后，就立即让这个函数退出。要做到这一点，有一个常见的技巧，即在面对一个嵌套的if分支时，可以把外层if表达式进行反转。重构后的del函数如下：
+
+| 1234567891011 | var del = function( obj ){if ( obj.isReadOnly ){ // 反转if 表达式return;}if ( obj.isFolder ){return deleteFolder( obj );}if ( obj.isFile ){return deleteFile( obj );}}; |
+| --- | --- |
+
+### 四、 打包优化
+
+上面说了代码方面的规范和优化，下面说下重点的打包优化，前段时间打包的 vender bundle 足足 1.4M，app bundle 也有 270K，app bundle 可以通过组件懒加载解决，vender 包该怎么解决？
+
+有人会质疑是不是没压缩或依赖包没去重，其实都做了就是看到的 1.4M。
+
+解决方法很简单，打包 vender 时不打包 vue、vuex、vue-router、axios 等，换用国内的 bootcdn 直接引入到根目录的 index.html 中。
+
+例如：
+
+在 webpack 里有个 externals，可以忽略不需要打包的库
+
+externals: {
+
+&#39;vue&#39;: &#39;Vue&#39;,
+
+&#39;vue-router&#39;: &#39;VueRouter&#39;,
+
+&#39;vuex&#39;: &#39;Vuex&#39;,
+
+&#39;axios&#39;: &#39;axios&#39;
+
+}
+
+此时的 vender 包会非常小，如果不够小还可以拆分其他的库，此时增加了请求的数量，但是远比加载一个 1.4M 的 bundle 快的多。
+
+### 五、返回对象，使方法可以链式调用
+
+ 1  function Person(name) {
+
+ 2    this.name = name;
+
+ 3
+
+ 4    this.sayName = function() {
+
+ 5      console.log(&quot;Hello my name is: &quot;, this.name);
+
+ 6      return this;
+
+ 7    };
+
+ 8
+
+ 9    this.changeName = function(name) {
+
+10      this.name = name;
+
+11      return this;
+
+12    };
+
+13  }
+
+14
+
+15  var person = new Person(&quot;John&quot;);
+
+16  person.sayName().changeName(&quot;Timmy&quot;).sayName();
+
+在面向对象的Javascript中为对象建立一个方法时，返回当前对象可以让你在一条链上调用方法。
