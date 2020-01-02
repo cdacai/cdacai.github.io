@@ -4,7 +4,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/.deploy_git" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cdacai.github.io" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/source/lib/jquery_lazyload" vcs="hg4idea" />
-    <mapping directory="$PROJECT_DIR$/themes/next" vcs="hg4idea" />
+    <mapping directory="$PROJECT_DIR$/source/lib/jquery_lazyload" vcs="svn" />
+    <mapping directory="$PROJECT_DIR$/themes/next" vcs="svn" />
   </component>
 </project>
