@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>&#39;hexo博客速度及样式优化&#39;</title>
+    <title>hexo博客速度及样式优化</title>
     <url>/2020/01/04/hexo%E5%8D%9A%E5%AE%A2%E9%80%9F%E5%BA%A6%E5%8F%8A%E6%A0%B7%E5%BC%8F%E4%BC%98%E5%8C%96/</url>
-    <content><![CDATA[<p>阿里云个人主机（不能安装数据库），续费要五百多，我只是用来写博客，果断另寻出路。<br>又github pages服务可以映射域名，从此开始了入魔的优化之旅：</p><p>12月26号开工，<br>首先是版面安排。<br>我喜欢Next主题，Gmini风格，黑白，简洁有序。<br>版面仿照vincentqin.tech，增加留言板、收录、日历、搜索。<br>使用valine评论系统（设置第三方邮箱的，无论原作者原版、增强版、网络方法均无效）。</p><p>安排过程中发现：<br>github pages首页加载一般10秒钟左右，可以用抽筋来形容。<br>下面是优化：</p><p>1、首页文章展示五篇文章，使用ReadMore部分展示(自动截取的失效)，减少dom渲染时间<br>2、压缩图片和HTML体积大小，hexo-neat比gulp方便，自动在构建时候先压缩。图片的大小减少一半<br>3、利用主题里的config,yml设置valine等js的cdn引用地址，页面加载速度大大增加，从9秒减少到5秒<br>4、github和jsdelive的cdn有合作，把所有的js和静态资源全部cdn引用了，只差首页html了，页面速度从5秒上升到2秒左右<br>5、利用codingPages双线部署，页面加载降低到1秒左右，只是coding超级不稳定，有时候甚至加载到1分多钟……<br>6、到这一步，唯一阻碍素的就是线路和首页html的加载了 ，需要国内的cdn才可以解决，只是均收费，暂告一段落吧。</p>]]></content>
+    <content><![CDATA[<p>阿里云个人主机（不能安装数据库），续费要五百多，我只是用来写博客而已，果断另寻出路。<br>听说github pages服务可以映射域名，刚好利用上续费的域名，从此开始了入魔的优化之旅：</p><p>12月26号开工，<br>首先是版面安排。<br>我喜欢Next主题，Gmini风格，黑白，简洁有序。<br>版面仿照vincentqin.tech，增加留言板、收录、日历、搜索。<br>使用valine评论系统（设置第三方邮箱的，无论原作者原版、增强版、网络方法均无效）。</p><p>安排过程中发现：<br>github pages首页加载一般10秒钟左右，可以用抽筋来形容。<br>下面是优化：</p><p>1、首页文章展示五篇文章，使用ReadMore部分展示(自动截取的失效)，减少dom渲染时间<br>2、压缩图片和HTML体积大小，hexo-neat比gulp方便，自动在构建时候先压缩。图片的大小减少一半<br>3、利用主题里的config,yml设置valine等js的cdn引用地址，页面加载速度大大增加，从9秒减少到5秒<br>4、github和jsdelive的cdn有合作，把所有的js和静态资源全部cdn引用了，只差首页html了，页面速度从5秒上升到2秒左右<br>5、利用codingPages双线部署，页面加载降低到1秒左右，只是coding超级不稳定，有时候甚至加载到1分多钟……<br>6、到这一步，唯一阻碍素的就是线路和首页html的加载了 ，需要国内的cdn才可以解决，只是均收费，暂告一段落吧。</p>]]></content>
       <categories>
         <category>web前端</category>
       </categories>
