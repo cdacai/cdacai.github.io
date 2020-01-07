@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-04T10:28:28.539Z</updated>
+  <updated>2020-01-07T14:55:31.344Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack框架中es6语法及api的转换</title>
+    <link href="http://yoursite.com/2020/01/07/webpack%E6%A1%86%E6%9E%B6%E4%B8%ADes6%E8%AF%AD%E6%B3%95%E5%8F%8Aapi%E7%9A%84%E8%BD%AC%E6%8D%A2/"/>
+    <id>http://yoursite.com/2020/01/07/webpack%E6%A1%86%E6%9E%B6%E4%B8%ADes6%E8%AF%AD%E6%B3%95%E5%8F%8Aapi%E7%9A%84%E8%BD%AC%E6%8D%A2/</id>
+    <published>2020-01-07T14:09:35.000Z</published>
+    <updated>2020-01-07T14:55:31.344Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;低版本的浏览器语法转换安装以下几个插件并作配置如下：&lt;br&gt;安装babel包&lt;/p&gt;&lt;figure class=&quot;highlight autohotkey&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;`babel-core` `babel-loader` `babel-plugin-transform-runtime` `babel-polyfill``babel-preset-es2015`&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;说明：&lt;br&gt;1、babel-core、babel-loader、babel-preset-es2015这三个模块是必须的，安装最新的转换规则是这三个 @babel/core babel-loader @babel/preset-env&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="http://yoursite.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="es6" scheme="http://yoursite.com/tags/es6/"/>
+    
+      <category term="babel" scheme="http://yoursite.com/tags/babel/"/>
+    
+      <category term="浏览器兼容" scheme="http://yoursite.com/tags/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo博客速度及样式优化</title>
