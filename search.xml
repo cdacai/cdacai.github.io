@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>笔记</title>
+    <url>/2020/01/10/%E8%87%AA%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>1、谷歌浏览器devTools离线化：<br>每次连接app真机调试时候，总是会到谷歌的服务器去查询对应调试版本，然后去下载，这样就必须去翻墙，对开发来说繁琐且没必要，所以我网上下载了离线包，mac、windows都可以离线调试，不用翻墙。<br>2、es2020语法妙用：</p><ul><li>链判断运算符 如果读取对象内部的某个属性，往往需要判断一下该对象是否存在。比如，要读取message.body.user.firstName，层层判断非常麻烦，因此 ES2020 引入了“链判断运算符”（optional chaining operator）?.，简化上面的写法。<pre><code>const firstName = message?.body?.user?.firstName || &apos;default&apos;;
+const fooValue = myForm.querySelector(&apos;input[name=foo]&apos;)?.value</code></pre>上面代码使用了?.运算符，直接在链式调用的时候判断，左侧的对象是否为null或undefined。如果是的，就不再往下运算，而是返回undefined。</li><li>Null 判断运算符<br>ES2020 引入了一个新的 Null 判断运算符??。它的行为类似||，但是只有运算符左侧的值为null或undefined时，才会返回右侧的值。<pre><code>const headerText = response.settings.headerText ?? &apos;Hello, world!&apos;;
+const animationDuration = response.settings.animationDuration ?? 300;
+const showSplashScreen = response.settings.showSplashScreen ?? true;</code></pre>上面代码中，默认值只有在属性值为null或undefined时，才会生效。</li></ul>]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>笔记</tag>
+        <tag>细节</tag>
+        <tag>知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>webpack框架中es6语法及api的转换</title>
     <url>/2020/01/07/webpack%E6%A1%86%E6%9E%B6%E4%B8%ADes6%E8%AF%AD%E6%B3%95%E5%8F%8Aapi%E7%9A%84%E8%BD%AC%E6%8D%A2/</url>
     <content><![CDATA[<p>低版本的浏览器语法转换安装以下几个插件并作配置如下：<br>安装babel包</p><figure class="highlight autohotkey"><table><tr><td class="code"><pre><span class="line">`babel-core` `babel-loader` `babel-plugin-transform-runtime` `babel-polyfill``babel-preset-es2015`</span><br></pre></td></tr></table></figure><p>说明：<br>1、babel-core、babel-loader、babel-preset-es2015这三个模块是必须的，安装最新的转换规则是这三个 @babel/core babel-loader @babel/preset-env</p><a id="more"></a><p>2、babel有时转换语法并不会转化BOM里面不兼容的API比如 Promise,Set,Symbol,Array.from,async 等等的一些API，这时候就需要 polyfill 来转转化这些API。<br>polyfill有三种：<br>babel-runtime、 babel-plugin-transform-runtime、babel-polyfill。<br>其中babel-runtime和 babel-plugin-transform-runtime的区别是，相当一前者是手动挡而后者是自动挡，每当要转译一个api时都要手动加上require(‘babel-runtime’)，而babel-plugin-transform-runtime会由工具自动添加，主要的功能是为api提供沙箱的垫片方案，不会污染全局的api，因此适合用在第三方的开发产品中。</p><p>3、在转换 ES2015 语法为 ECMAScript 5 的语法时，babel 会需要一些辅助函数，例如 _extend。babel 默认会将这些辅助函数内联到每一个 js 文件里，这样文件多的时候，项目就会很大。所以 babel 提供了 transform-runtime 来将这些辅助函数“搬”到一个单独的模块 babel-runtime 中，这样做能减小项目文件的大小。</p><p>transform-runtime优点:</p><ul><li>不会污染全局变量</li><li>多次使用只会打包一次</li><li>依赖统一按需引入,无重复引入,无多余引入。</li></ul><p>transform-runtime缺点:</p><ul><li>不支持实例化的方法Array.includes(x) 就不能转化</li><li>如果使用的API用的次数不是很多，那么transform-runtime 引入polyfill的包会比不是transform-runtime 时大</li></ul><p>4、网上很多人说，集成了transform-runtime就不用babel-polyfill了，其实不然，看看官方怎么说的：<br></p><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">NOTE:<span class="built_in"> Instance </span>methods such as <span class="string">"foobar"</span>.includes(<span class="string">"foo"</span>) will <span class="keyword">not</span> work since that would require modification of existing built-ins (Use babel-polyfill <span class="keyword">for</span> that).</span><br></pre></td></tr></table></figure><br>所以，我们还是需要babel-polyfill哦。<p></p><p>webpack.config.js 配置文件</p><figure class="highlight typescript"><table><tr><td class="code"><pre><span class="line">modules.exports = &#123;</span><br><span class="line">       ...</span><br><span class="line">       entry: &#123; name: [<span class="string">'babel-polyfill'</span>], <span class="string">'path/to/file.js'</span> &#125;,  <span class="comment">// 在入口文件添加babel-polyfill</span></span><br><span class="line">       ....</span><br><span class="line">       <span class="keyword">module</span>: &#123;</span><br><span class="line">           rules: [</span><br><span class="line">               &#123;</span><br><span class="line">                   test: <span class="regexp">/\.js$/</span>,</span><br><span class="line">                   exclude: <span class="regexp">/node_modules/</span>,</span><br><span class="line">                   loader: <span class="string">'babel-loader'</span></span><br><span class="line">               &#125;  <span class="comment">// 添加loader</span></span><br><span class="line">           ]</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>.babelrc 配置文件</p><figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">"presets"</span>: [ </span><br><span class="line">    <span class="string">"es2015"</span> </span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"plugins"</span>: [</span><br><span class="line">    <span class="string">"transform-runtime"</span></span><br><span class="line">  ] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
@@ -21,8 +37,8 @@
         <category>web前端</category>
       </categories>
       <tags>
-        <tag>优化</tag>
         <tag>hexo</tag>
+        <tag>优化</tag>
         <tag>cdn</tag>
       </tags>
   </entry>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-07T14:55:31.344Z</updated>
+  <updated>2020-01-10T10:07:37.704Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>笔记</title>
+    <link href="http://yoursite.com/2020/01/10/%E8%87%AA%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2020/01/10/%E8%87%AA%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-01-10T09:59:06.000Z</published>
+    <updated>2020-01-10T10:07:37.704Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;1、谷歌浏览器devTools离线化：&lt;br&gt;每次连接app真机调试时候，总是会到谷歌的服务器去查询对应调试版本，然后去下载，这样就必须去翻墙，对开发来说繁琐且没必要，所以我网上下载了离线包，mac、windows都可以离线调试，不用翻墙。&lt;br&gt;2、es2020语法妙用：
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="http://yoursite.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="笔记" scheme="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="细节" scheme="http://yoursite.com/tags/%E7%BB%86%E8%8A%82/"/>
+    
+      <category term="知识" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>webpack框架中es6语法及api的转换</title>
     <link href="http://yoursite.com/2020/01/07/webpack%E6%A1%86%E6%9E%B6%E4%B8%ADes6%E8%AF%AD%E6%B3%95%E5%8F%8Aapi%E7%9A%84%E8%BD%AC%E6%8D%A2/"/>
     <id>http://yoursite.com/2020/01/07/webpack%E6%A1%86%E6%9E%B6%E4%B8%ADes6%E8%AF%AD%E6%B3%95%E5%8F%8Aapi%E7%9A%84%E8%BD%AC%E6%8D%A2/</id>
     <published>2020-01-07T14:09:35.000Z</published>
-    <updated>2020-01-07T14:55:31.344Z</updated>
+    <updated>2020-01-09T09:44:30.834Z</updated>
     
     <summary type="html">
     
@@ -64,9 +95,9 @@
       <category term="web前端" scheme="http://yoursite.com/categories/web%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="优化" scheme="http://yoursite.com/tags/%E4%BC%98%E5%8C%96/"/>
-    
       <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="优化" scheme="http://yoursite.com/tags/%E4%BC%98%E5%8C%96/"/>
     
       <category term="cdn" scheme="http://yoursite.com/tags/cdn/"/>
     
