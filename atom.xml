@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-01-17T07:19:39.661Z</updated>
+  <updated>2020-01-22T18:35:43.426Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>赠</title>
+    <link href="http://yoursite.com/2020/01/23/%E8%B5%A0/"/>
+    <id>http://yoursite.com/2020/01/23/%E8%B5%A0/</id>
+    <published>2020-01-22T18:28:57.000Z</published>
+    <updated>2020-01-22T18:35:43.426Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;人生自是有情痴，聆歌当别，泪出夜半，终于零如雪，片片堆积，砌就，茫茫一奇绝。&lt;br&gt;何事苦苦苦淹流，心念灰烬，嘶风泣雨，翻出千万叠，次第晕染，吹成，滔滔弥天波。&lt;/p&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="关于CH" scheme="http://yoursite.com/categories/%E5%85%B3%E4%BA%8ECH/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>笔记</title>
     <link href="http://yoursite.com/2020/01/10/%E7%AC%94%E8%AE%B0/"/>
     <id>http://yoursite.com/2020/01/10/%E7%AC%94%E8%AE%B0/</id>
     <published>2020-01-10T09:59:06.000Z</published>
-    <updated>2020-01-17T07:19:39.661Z</updated>
+    <updated>2020-01-17T07:22:26.178Z</updated>
     
     <summary type="html">
     
@@ -44,6 +69,12 @@
       <category term="细节" scheme="http://yoursite.com/tags/%E7%BB%86%E8%8A%82/"/>
     
       <category term="知识" scheme="http://yoursite.com/tags/%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="devTools" scheme="http://yoursite.com/tags/devTools/"/>
+    
+      <category term="es语法" scheme="http://yoursite.com/tags/es%E8%AF%AD%E6%B3%95/"/>
+    
+      <category term="umd" scheme="http://yoursite.com/tags/umd/"/>
     
   </entry>
   
