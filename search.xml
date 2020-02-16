@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>webpack4打包css抽取</title>
+    <url>/2020/02/15/webpack4%E6%89%93%E5%8C%85css%E6%8A%BD%E5%8F%96/</url>
+    <content><![CDATA[<p>如下表示将所有 CSS 文件打包为一个（注意将权重设置为最高，不然可能其他的 cacheGroups 会提前打包一部分样式文件）</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  optimization: &#123;</span><br><span class="line">    splitChunks: &#123;</span><br><span class="line">      cacheGroups: &#123;</span><br><span class="line">        styles: &#123;</span><br><span class="line">          name: <span class="literal">true</span>,</span><br><span class="line">          test: <span class="regexp">/\.css$/</span>,</span><br><span class="line">          chunks: <span class="string">'all'</span>,</span><br><span class="line">          enforce: <span class="literal">true</span>,</span><br><span class="line">          maxSize: <span class="number">1650000</span>,<span class="comment">//165kb，压缩拆包前的的最大值</span></span><br><span class="line">          priority: <span class="number">20</span>, </span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>web前端</category>
+      </categories>
+      <tags>
+        <tag>webpack4</tag>
+        <tag>css抽取</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>夜半</title>
     <url>/2020/02/02/%E5%A4%9C%E5%8D%8A/</url>
     <content><![CDATA[<p>夜半雨来，卷起帘幕千万重，冉冉，似无极<br>漫拾衣润，数尽归鸿天边意，脉脉，无断续</p>]]></content>

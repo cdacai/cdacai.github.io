@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-02T12:17:21.424Z</updated>
+  <updated>2020-02-16T12:50:35.617Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack4打包css抽取</title>
+    <link href="http://yoursite.com/2020/02/15/webpack4%E6%89%93%E5%8C%85css%E6%8A%BD%E5%8F%96/"/>
+    <id>http://yoursite.com/2020/02/15/webpack4%E6%89%93%E5%8C%85css%E6%8A%BD%E5%8F%96/</id>
+    <published>2020-02-15T07:08:21.264Z</published>
+    <updated>2020-02-16T12:50:35.617Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;如下表示将所有 CSS 文件打包为一个（注意将权重设置为最高，不然可能其他的 cacheGroups 会提前打包一部分样式文件）&lt;/p&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="http://yoursite.com/categories/web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="webpack4" scheme="http://yoursite.com/tags/webpack4/"/>
+    
+      <category term="css抽取" scheme="http://yoursite.com/tags/css%E6%8A%BD%E5%8F%96/"/>
+    
+  </entry>
   
   <entry>
     <title>夜半</title>
