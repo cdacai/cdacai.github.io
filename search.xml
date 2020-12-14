@@ -184,22 +184,6 @@ window.addEventListener(message,function(event) {
       </categories>
   </entry>
   <entry>
-    <title>笔记</title>
-    <url>/2020/01/10/%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="谷歌浏览器devTools离线化："><a href="#谷歌浏览器devTools离线化：" class="headerlink" title="谷歌浏览器devTools离线化："></a>谷歌浏览器devTools离线化：</h3><p>每次连接app真机调试时候，总是会到谷歌的服务器去查询对应调试版本，然后去下载，这样就必须去翻墙，对开发来说繁琐且没必要，所以我网上下载了离线包，mac、windows都可以离线调试，不用翻墙。</p><h3 id="es2020语法妙用："><a href="#es2020语法妙用：" class="headerlink" title="es2020语法妙用："></a>es2020语法妙用：</h3><ul><li>链判断运算符 如果读取对象内部的某个属性，往往需要判断一下该对象是否存在。比如，要读取message.body.user.firstName，层层判断非常麻烦，因此 ES2020 引入了“链判断运算符”（optional chaining operator）?.，简化上面的写法。<figure class="highlight cs"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> firstName = message?.body?.user?.firstName || <span class="string">'default'</span>;</span><br><span class="line"><span class="keyword">const</span> fooValue = myForm.querySelector(<span class="string">'input[name=foo]'</span>)?.<span class="keyword">value</span></span><br></pre></td></tr></table></figure>上面代码使用了?.运算符，直接在链式调用的时候判断，左侧的对象是否为null或undefined。如果是的，就不再往下运算，而是返回undefined。</li><li>Null 判断运算符<br>ES2020 引入了一个新的 Null 判断运算符??。它的行为类似||，但是只有运算符左侧的值为null或undefined时，才会返回右侧的值。<figure class="highlight vbscript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> headerText = <span class="built_in">response</span>.settings.headerText ?? <span class="comment">'Hello, world!';</span></span><br><span class="line"><span class="keyword">const</span> animationDuration = <span class="built_in">response</span>.settings.animationDuration ?? <span class="number">300</span>;</span><br><span class="line"><span class="keyword">const</span> showSplashScreen = <span class="built_in">response</span>.settings.showSplashScreen ?? <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>上面代码中，默认值只有在属性值为null或undefined时，才会生效。</li></ul><h3 id="UMD依赖写法"><a href="#UMD依赖写法" class="headerlink" title="UMD依赖写法"></a>UMD依赖写法</h3><figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">(<span class="name">function</span>(<span class="name">root</span>, factory) &#123;</span><br><span class="line">    if (<span class="name">typeof</span> module === <span class="symbol">'object</span>' &amp;&amp; typeof module.exports === <span class="symbol">'object</span>') &#123;</span><br><span class="line">        console.log(<span class="symbol">'是commonjs模块规范，nodejs环境</span>')</span><br><span class="line">        var depModule = require(<span class="symbol">'./umd-module-depended</span>')</span><br><span class="line">        module.exports = factory(<span class="name">depModule</span>)<span class="comment">;</span></span><br><span class="line">    &#125; else if (<span class="name">typeof</span> define === <span class="symbol">'function</span>' &amp;&amp; define.amd) &#123;</span><br><span class="line">        console.log(<span class="symbol">'是AMD模块规范，如require.js</span>')</span><br><span class="line">        define([<span class="symbol">'depModule</span>'], factory)</span><br><span class="line">    &#125; else if (<span class="name">typeof</span> define === <span class="symbol">'function</span>' &amp;&amp; define.cmd) &#123;</span><br><span class="line">        console.log(<span class="symbol">'是CMD模块规范，如sea.js</span>')</span><br><span class="line">        define(<span class="name">function</span>(<span class="name"><span class="builtin-name">require</span></span>, exports, module) &#123;</span><br><span class="line">            var depModule = require(<span class="symbol">'depModule</span>')</span><br><span class="line">            module.exports = factory(<span class="name">depModule</span>)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        console.log(<span class="symbol">'没有模块环境，直接挂载在全局对象上</span>')</span><br><span class="line">        root.umdModule = factory(<span class="name">root.depModule</span>)<span class="comment">;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;(<span class="name">this</span>, function(<span class="name">depModule</span>) &#123;</span><br><span class="line">    console.log(<span class="symbol">'我调用了依赖模块</span>', depModule)</span><br><span class="line">    // ...省略了一些代码，去代码仓库看吧</span><br><span class="line">    return &#123;</span><br><span class="line">        name: <span class="symbol">'我自己是一个umd模块</span>'</span><br><span class="line">    &#125;</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>web前端</category>
-      </categories>
-      <tags>
-        <tag>笔记</tag>
-        <tag>细节</tag>
-        <tag>知识</tag>
-        <tag>devTools</tag>
-        <tag>es语法</tag>
-        <tag>umd</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>前端性能优化—js代码打包</title>
     <url>/2019/03/22/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E2%80%94js%E4%BB%A3%E7%A0%81%E6%89%93%E5%8C%85/</url>
     <content><![CDATA[<p>现在的 web 应用，内容一般都很丰富，站点需要加载的资源也特别多，尤其要加载很多 js 文件。js 文件从服务端获取，体积大小决定了传输的快慢；浏览器端拿到 js 文件之后，还需要经过解压缩、解析、编译、执行操作，所以， <strong>控制 js 代码的体积</strong> 以及 <strong>按需加载</strong> 对前端性能以及用户体验是十分的重要。</p><p>本文从 Tree Shaking 和 代码分割 两部分介绍 js 打包优化，有兴趣的可以跟着一起实践。 clone 以下项目 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fjasonintju%2Foptimizing-js">github.com/jasonintju/…</a> ，就是个简单的 React SPA，一看就懂。</p><h2 id="Tree-Shaking"><a href="#Tree-Shaking" class="headerlink" title="Tree Shaking"></a>Tree Shaking</h2><p>Tree Shaking 简单理解就是：打包时把一些没有用到的代码删除掉，保证打包后的代码体积最小化。其详细的介绍可以参考 <a href="https://link.juejin.im/?target=https%3A%2F%2Fjuejin.im%2Fpost%2F5a4dc842518825698e7279a9">Tree-Shaking性能优化实践 – 原理篇</a> 。</p><a id="more"></a><p>项目 clone、安装依赖后，先 npm run build 打包初始代码，大小及分布如下（其中 src/utils/utils.js 这个文件打包后大小为 11.72Kb ）：</p><p>src/containers/About/test.js 只引用但是没有使用到， src/utils/utils.js 这个文件是个 <a href="http://www.codercto.com/tool.html" target="_blank" rel="noopener">工具</a> 函数集，有很多很多函数，而我们只用到了其中的一个。默认情况下，整个文件都被打包进 main.js 了，显然，这是很大的冗余，正好可以使用 Tree Shaking 优化。</p><h3 id="修改-babelrc"><a href="#修改-babelrc" class="headerlink" title="修改 .babelrc"></a>修改 .babelrc</h3><p>{</p><p>&quot;presets&quot;:[[&quot;env&quot;,{&quot;modules&quot;:false}],&quot;react&quot;,&quot;stage-0&quot;]</p><p>}</p><p>复制代码</p><h3 id="修改-package-json"><a href="#修改-package-json" class="headerlink" title="修改 package.json"></a>修改 package.json</h3><p>{</p><p>&quot;name&quot;:&quot;optimizing-js&quot;,</p><p>&quot;version&quot;:&quot;1.0.0&quot;,</p><p>&quot;sideEffects&quot;:false</p><p>}</p><p>复制代码</p><p>这样设置之后，表示所有的 module 都是无副作用的，没有使用到的 module 都可以删掉，此时打包结果如下：</p><p>importReactfrom&#39;react&#39;;</p><p>// 只引入了 arraySum， utils.js 中的其他方法不会被打包</p><p>import{ arraySum }from&#39;@utils/utils&#39;;</p><p>import&#39;./test&#39;;// 引用，&quot;未使用&quot;，不会被打包</p><p>import&#39;./About.scss&#39;;// 引用，&quot;未使用&quot;，不会被打包</p><p>classAboutextendsReact.Component{</p><p>render(){</p><pre><code>const sum = arraySum([12,3]);
@@ -401,6 +385,20 @@ return(
       <tags>
         <tag>快速建站</tag>
         <tag>wordPress</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>&#39;统计GITLAB提交次数和数量的运行脚本&#39;</title>
+    <url>/2020/12/14/%E7%BB%9F%E8%AE%A1GITLAB%E6%8F%90%E4%BA%A4%E6%AC%A1%E6%95%B0%E5%92%8C%E6%95%B0%E9%87%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>全栈</category>
+      </categories>
+      <tags>
+        <tag>脚本</tag>
+        <tag>自动</tag>
+        <tag>统计</tag>
+        <tag>gitlab</tag>
       </tags>
   </entry>
 </search>
