@@ -390,7 +390,7 @@ return(
   <entry>
     <title>统计GITLAB提交次数和数量的运行脚本</title>
     <url>/2020/12/14/%E7%BB%9F%E8%AE%A1GITLAB%E6%8F%90%E4%BA%A4%E6%AC%A1%E6%95%B0%E5%92%8C%E6%95%B0%E9%87%8F%E7%9A%84%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>利用gitlab放出的接口，比对提交id及对应的详细信息，获取合并次数和提交的代码行数次数。</p>]]></content>
       <categories>
         <category>全栈</category>
       </categories>
